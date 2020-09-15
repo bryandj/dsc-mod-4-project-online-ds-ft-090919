@@ -1,5 +1,101 @@
+# Module 4 -  Final Project
 
-# Module 4 -  Final Project Specifications
+> what are the top 5 best zipcodes for us to invest in?
+
+Section 1: Load Data & Import Libraries
+- Define functions
+- import helper functions
+
+Section 2: Exploratory Data Analysis - Georgia zipcodes
+Section 2a: Change 'dates' column to datetime format & set 'dates' column as the index
+
+<img src="images/Top5_ATL.png"/>
+<img src="images/avg_price_ga_counties"/>
+
+Section 3: Zip Code Selection
+- Real estate investment firm criteria
+
+1) Urbanization - Zip Code must be in top 50% according to sizerank variable.
+** In the Greater Atlanta area, commuting is tough with traffic, so living in a suburb/area within 45min driving distance is essential.
+** I hypothesize that the best investment opportunities will be found just outside the perimeter in growing suburbs. 
+
+2) Average House price
+** House price should be close to the average house price for that zipcode, preferably lower.
+** Range - 1.5 decile below and 1 decile above.
+
+3) ROI (Return on investment)
+** Investment Company wants to know which zipcodes will have the greatest 10 year ROI.
+
+4) Risk
+** Risk averse investment company. Want zip codes to be selected according to a coefficient of variation below 70th percentile.
+
+<img src="images/t5_zips"/>
+
+
+## Top 5 Zipcodes
+
+#### Zipcode 30080 - Smyrna, GA
+#### Zipcode 30066 - Marietta, GA
+#### Zipcode 30064 - Marietta, GA
+#### Zipcode 30152 - Kennesaw, GA 
+#### Zipcode 30101 - Acworth, GA
+
+
+Section 4: Time Series Analysis
+Section 4a: Reshaped data from wide to long format
+Section 4b: Set 'time' column as index
+
+<img src="images/ga_t5_ts"/>
+
+Monthly Returns
+<img src="images/mr_30080"/>
+
+Rolling Mean
+<img src="images/rolling_30080"/>
+
+ADF
+<img src="images/adf"/>
+
+## ARIMA Modeling
+
+<img src="images/acf"/>
+
+
+## SARIMA
+
+<img src="images/sarima_30080"/>
+
+Train
+<img src="images/train_30080"/>
+Test
+<img src="images/test_30080"/>
+Forcast
+<img src="images/forcast_30080"/>
+
+Results
+<img src="images/results"/>
+
+
+## Reccomendations
+
+#### After performing time series analysis on the top 5 zipcodes in the greater atlanta area, I recommend investing in 3:
+
+#### 1) 30080 (Smyrna, GA) -> 10-yr return = 430.62%
+#### 2) 30101 (Acworth, GA) -> 10-yr return = 141.87%
+#### 3) 30066 (Marietta, GA) -> 10-yr return = 124.46%
+
+#### The predicted return on investment for zipcode 30080 is much higher than the other, look in Smyrna, GA first.
+
+
+
+
+
+
+
+
+
+
+
 
 ## Introduction
 
@@ -10,6 +106,7 @@ In this lesson, we'll review all the guidelines and specifications for the final
 * Understand all required aspects of the Final Project for Module 4
 * Understand all required deliverables
 * Understand what constitutes a successful project
+
 
 ### Final Project Summary
 
