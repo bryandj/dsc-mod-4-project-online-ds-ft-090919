@@ -10,7 +10,7 @@ Section 2: Exploratory Data Analysis - Georgia zipcodes
 Section 2a: Change 'dates' column to datetime format & set 'dates' column as the index
 
 <img src="images/Top5_ATL.png"/>
-<img src="images/avg_price_ga_counties"/>
+<img src="images/avg_price_ga_counties.png"/>
 
 Section 3: Zip Code Selection
 - Real estate investment firm criteria
@@ -29,7 +29,7 @@ Section 3: Zip Code Selection
 4) Risk
 ** Risk averse investment company. Want zip codes to be selected according to a coefficient of variation below 70th percentile.
 
-<img src="images/t5_zips"/>
+<img src="images/t5_zips.png"/>
 
 
 ## Top 5 Zipcodes
@@ -45,35 +45,35 @@ Section 4: Time Series Analysis
 Section 4a: Reshaped data from wide to long format
 Section 4b: Set 'time' column as index
 
-<img src="images/ga_t5_ts"/>
+<img src="images/ga_t5_ts.png"/>
 
 Monthly Returns
-<img src="images/mr_30080"/>
+<img src="images/mr_30080.png"/>
 
 Rolling Mean
-<img src="images/rolling_30080"/>
+<img src="images/rolling_30080.png"/>
 
 ADF
-<img src="images/adf"/>
+<img src="images/adf.png"/>
 
 ## ARIMA Modeling
 
-<img src="images/acf"/>
+<img src="images/acf.png"/>
 
 
 ## SARIMA
 
-<img src="images/sarima_30080"/>
+<img src="images/sarima_30080.png"/>
 
 Train
-<img src="images/train_30080"/>
+<img src="images/train_30080.png"/>
 Test
-<img src="images/test_30080"/>
+<img src="images/test_30080.png"/>
 Forcast
-<img src="images/forcast_30080"/>
+<img src="images/forcast_30080.png"/>
 
 Results
-<img src="images/results"/>
+<img src="images/results.png"/>
 
 
 ## Reccomendations
