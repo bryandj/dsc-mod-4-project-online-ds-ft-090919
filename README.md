@@ -1,36 +1,56 @@
-# Module 4 -  Final Project
+# Module 4 -  Time Series Analysis Project
 
+## Introduction:
+For this data analysis project, I have been hired as a consultant for a fictional real-estate investment firm. The firm wants to know:
 > what are the top 5 best zipcodes for us to invest in?
 
-Section 1: Load Data & Import Libraries
-- Define functions
-- import helper functions
+My goal is to forecast real estate prices of various zipcodes using data from Zillow and find the 5 "Best Investments" in The Greater Atlanta Area.
 
-Section 2: Exploratory Data Analysis - Georgia zipcodes
-Section 2a: Change 'dates' column to datetime format & set 'dates' column as the index
+### Definition of "Best Investment"
+#### "Best investment" = Zipcode has highest 10-year ROI & zipcode meets all 4 of our investment criteria.
 
-<img src="images/Top5_ATL.png"/>
+### Opportunity:
+As a Georgia native with an impressive 6 months of real estate experience, they couln't have picked a better pro for the job.
+
+Over the past 20 years I have lived in Atlanta, I have seen more and more people move away from downtown to the suburbs because the cost of living is much cheaper.
+
+Everyday, 500 people move to Atlanta; therefore, the suburb begin to fill up very quickly. Prices begin to rise and the next suburb begins to develop. Suppose the first suburb was 30 min from downtown and the next suburb being developed is 40 minutes from the city. Prices will be more expensive in the closer suburb. But as suburbs are build farther and farrther away, what one might have imaged as "far" today, could be PRIME REAL ESTATE in 10 years.
+
+Good news for the investment firm, We have a MASSIVE opportunity to pinpoint the best zipcodes in The Greater Atlanta Area to forecast where the PRIME REAL ESTATE will be in 10 years.
+
+
+### Zillow Real Estate Data
+Zillow Real Estate Data includes: Monthly median house prices from 4/1996 - 4/2018, city, state, county, zipcode, sizerank, and Region ID.
+
+I picked 3 counties that I hypothesize real estate prices will rapidly increase over the next 10 years.
+
+    1) Fulton County
+    2) Dekalb County
+    3) Cobb County
+
 <img src="images/avg_price_ga_counties.png"/>
 
-Section 3: Zip Code Selection
-- Real estate investment firm criteria
+This graph makes a lot of sense. Fulton is the closest to Downtown Atlanta, then Dekalb, then Cobb.
+
+I believe we have a massive opportunity to find a great investment in The Greater Atlanta Area, ideally, in the suburbs that are within 45 min of Downtown Atlanta. In order to figure out where the best zipcodes are, we must filter the zipcodes by our "Best ZIP Code Criteria"
+
+## "Best ZIP Code Criteria":
 
 1) Urbanization - Zip Code must be in top 50% according to sizerank variable.
-** In the Greater Atlanta area, commuting is tough with traffic, so living in a suburb/area within 45min driving distance is essential.
-** I hypothesize that the best investment opportunities will be found just outside the perimeter in growing suburbs. 
-
-2) Average House price
-** House price should be close to the average house price for that zipcode, preferably lower.
+** Traffic makes Commuting from the Greater Atlanta area into the city brutal ... So living within a 45min driving distance to work is essential.
+** I hypothesize that the best investment opportunities will be found just outside the perimeter in growing suburbs.
+    
+2) Median House price
+** House price should be close to the median house price for that zipcode, preferably lower.
 ** Range - 1.5 decile below and 1 decile above.
 
 3) ROI (Return on investment)
 ** Investment Company wants to know which zipcodes will have the greatest 10 year ROI.
 
 4) Risk
-** Risk averse investment company. Want zip codes to be selected according to a coefficient of variation below 70th percentile.
+** Risk averse investment company. Zip codes to be selected according to a coefficient of variation below 70th percentile.
 
 <img src="images/t5_zips.png"/>
-
 
 ## Top 5 Zipcodes
 
@@ -40,21 +60,43 @@ Section 3: Zip Code Selection
 #### Zipcode 30152 - Kennesaw, GA 
 #### Zipcode 30101 - Acworth, GA
 
+NW Atlanta Zips (Cobb + Marietta GA)
 
-Section 4: Time Series Analysis
-Section 4a: Reshaped data from wide to long format
-Section 4b: Set 'time' column as index
+<img src="images/Top5_ATL.png"/>
+
+
+## Time Series Analysis
+#### Time Series Plot for our Top5 Zipcodes
 
 <img src="images/ga_t5_ts.png"/>
 
-Monthly Returns
+- I can see an overall positive trend year to year, but I am going to look at the returns by month to see if the trend is more stationary. 
+
+- Note: The 2007 housing bubble crash is easily seen in our graph. So monthly returns is probably a better indicator.
+
+#### Monthly Returns
 <img src="images/mr_30080.png"/>
 
-Rolling Mean
+- No trend in data. Assumption - data is stationary
+
+#### Rolling Mean
 <img src="images/rolling_30080.png"/>
 
-ADF
+- After plotting rolling mean, rolling standard deviation, and monthly returns, there is no trend in the plot.
+- Now I conducted a Augmented Dickey-Fuller Test for stationarity.
+
+#### ADF (Augmented Dickey-Fuller Test)
 <img src="images/adf.png"/>
+
+Insight:
+
+a) Naked eye test tells us that the data looks stationary, but the Dickey-Fuller Test says the data is not stationary.
+b) "i" is most likely 1 since all 5 zipcodes were not stationary
+c) If the data was stationary, "i" would have been 0
+
+
+#### Differencing to make data stationary by removing trends and seasonality.
+<img src="images/adf_1.png"/>
 
 ## ARIMA Modeling
 
@@ -67,16 +109,20 @@ ADF
 
 Train
 <img src="images/train_30080.png"/>
+
 Test
 <img src="images/test_30080.png"/>
-Forcast
+    ** Both predictions are very close to the actual data. RMSE are very close to each other.
+    
+#### Forcast the 1,3,5,10 year ROI for each zipcode
+
 <img src="images/forcast_30080.png"/>
 
-Results
+#### Results
 <img src="images/results.png"/>
 
 
-## Reccomendations
+## Recommendations
 
 #### After performing time series analysis on the top 5 zipcodes in the greater atlanta area, I recommend investing in 3:
 
@@ -87,111 +133,9 @@ Results
 #### The predicted return on investment for zipcode 30080 is much higher than the other, look in Smyrna, GA first.
 
 
+## Future Work
 
-
-
-
-
-
-
-
-
-
-## Introduction
-
-In this lesson, we'll review all the guidelines and specifications for the final project for Module 4.
-
-## Objectives
-
-* Understand all required aspects of the Final Project for Module 4
-* Understand all required deliverables
-* Understand what constitutes a successful project
-
-
-### Final Project Summary
-
-Another module down--you're absolutely crushing it! For this project, you'll get to flex your **_Time-Series_** muscles!
-
-<img src='https://raw.githubusercontent.com/learn-co-curriculum/dsc-mod-4-project/master/images/timegif.gif'>
-
-For this module's final project, we're going to put your newfound **_Time Series Analysis_** skills to the test. You will be forecasting real estate prices of various zipcodes using data from [Zillow](https://www.zillow.com/research/data/). However, this won't be as straightforward as just running a time-series analysis--you're going to have to make some data-driven decisions and think critically along the way!
-
-### The Project
-
-For this project, you will be acting as a consultant for a fictional real-estate investment firm. The firm has asked you what seems like a simple question:
-
-> what are the top 5 best zipcodes for us to invest in?
-
-This may seem like a simple question at first glance, but there's more than a little ambiguity here that you'll have to think through in order to provide a solid recommendation. Should your recommendation be focused on profit margins only? What about risk? What sort of time horizon are you predicting against?  Your recommendation will need to detail your rationale and answer any sort of lingering questions like these in order to demonstrate how you define "best".
-
-As mentioned previously, the data you'll be working with comes from the [Zillow Research Page](https://www.zillow.com/research/data/). However, there are many options on that page, and making sure you have exactly what you need can be a bit confusing. For simplicity's sake, we have already provided the dataset for you in this repo--you will find it in the file `zillow_data.csv`.
-
-## The Deliverables
-
-The goal of this project is to have you complete a very common real-world task in regard to Time-Series Modeling. However, real world problems often come with a significant degree of ambiguity, which requires you to use your knowledge of statistics and data science to think critically about and answer. While the main task in this project is Time-Series Modeling, that isn't the overall goal--it is important to understand that Time-Series Modeling is a tool in your toolbox, and the forecasts it provides you are what you'll use to answer important questions.
-
-In short, to pass this project, demonstrating the quality and thoughtfulness of your overall recommendation is at least as important as successfully building a Time-Series model!
-
-Online students should complete the following 4 deliverables for this project:
-
-* A well-documented **_Jupyter Notebook_** containing any code you've written for this project (use the notebook in this repo, `mod_4_starter_notebook.ipynb`). This work will need to be pushed to your GitHub repository in order to submit your project.
-* An organized **README.md** file in the GitHub repository that describes the contents of the repository. This file should be the source of information for navigating through the repository.
-* A **_[Blog post](https://github.com/learn-co-curriculum/dsc-welcome-blogging)_**.
-* An **_'Executive Summary' PowerPoint Presentation_** that explains your rationale and methodology for determining the best zipcodes for investment.
-
-Note: On-campus students may have different deliverables, please speak with your instructor.
-
-### Jupyter Notebook Must-Haves
-
-For this project, you will be provided with a jupyter notebook containing some starter code. If you inspect the zillow dataset file, you'll notice that the datetimes for each sale are the actual column names--this is a format you probably haven't seen before. To ensure that you're not blocked by preprocessing, we've provided some helper functions to help simplify getting the data into the correct format. You're not required to use this notebook or keep it in its current format, but we strongly recommend you consider making use of the helper functions so you can spend your time working on the parts of the project that matter.
-
-#### Organization/Code Cleanliness
-
-The notebook should be well organized, easy to follow, and code is modularized and commented where appropriate.
-
-* Level Up: The notebook contains well-formatted, professional looking markdown cells explaining any substantial code. All functions have docstrings that act as professional-quality documentation.
-* The notebook is written to technical audiences with a way to both understand your approach and reproduce your results. The target audience for this deliverable is other data scientists looking to validate your findings.
-* Data visualizations you create should be clearly labeled and contextualized--that is, they fit with the surrounding code or problems you're trying to solve. No dropping data visualizations randomly around your notebook without any context!
-
-#### Findings
-
-Your notebook should briefly mention the metrics you have defined as "best", so that any readers understand what technical metrics you are trying to optimize for (for instance, risk vs profitability, ROI yield, etc.). You do **not** need to explain or defend your your choices in the notebook--the blog post and executive summary presentation are both better suited to that sort of content. However, the notebook should provide enough context about your definition for "best investment" so that they understand what the code you are writing is trying to solve.
-
-#### Visualizations
-
-Time-Series Analysis is an area of data science that lends itself well to intuitive data visualizations. Whereas we may not be able to visualize the best choice in a classification or clustering problem with a high-dimensional dataset, that isn't an issue with Time Series data. As such, **_any findings worth mentioning in this problem are probably also worth visualizing_**. Your notebook should make use of data visualizations as appropriate to make your findings obvious to any readers.
-
-Also, remember that if a visualization is worth creating, then it's also worth taking the extra few minutes to make sure that it is easily understandable and well-formatted. When creating visualizations, make sure that they have:
-
-* A title
-* Clearly labeled X and Y axes, with appropriate scale for each
-* A legend, when necessary
-* No overlapping text that makes it hard to read
-* An intelligent use of color--multiple lines should have different colors and/or symbols to make them easily differentiable to the eye
-* An appropriate amount of information--avoid creating graphs that are "too busy"--for instance, don't create a line graph with 25 different lines on it
-
-<center><img src='images/bad-graph-1.png' height=100% width=100%>
-There's just too much going on in this graph for it to be readable--don't make the same mistake! (<a href='http://genywealth.com/wp-content/uploads/2010/03/line-graph.php_.png'>Source</a>)</center>
-
-### Blog Post Must-Haves
-
-Refer back to the [Blogging Guidelines](https://github.com/learn-co-curriculum/dsc-welcome-blogging) for the technical requirements and blog ideas.
-
-
-### Executive Summary Must-Haves
-
-Your presentation should:
-
-Contain between 5-10 professional quality slides detailing:
-
-* A high-level overview of your methodology and findings, including the 5 zipcodes you recommend investing in
-* A brief explanation of what metrics you defined as "best" in order complete this project
-
-As always, this prresentation should also:
-
-* Take no more than 5 minutes to present
-* Avoid technical jargon and explain results in a clear, actionable way for non-technical audiences.
-
-## Grading Rubric 
-
-Online students can find a PDF of the grading rubric for the project [here](https://github.com/learn-co-curriculum/dsc-mod-4-project/blob/master/module4_project_rubric.pdf). _Note: On-campus students may have different requirements, please speak with your instructor._
+* Include 2019 and 2020 data
+* Include impact of COVID-19 on real estate prices
+* Change "Best Zipcode" definition
+* Change risk averse criteria to a very risky criteria 
