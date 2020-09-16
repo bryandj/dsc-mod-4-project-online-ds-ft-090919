@@ -1,26 +1,29 @@
+> Bryan Jamieson
+> Blog Post: https://medium.com/@bryandj5/how-im-quadrupling-my-bank-account-by-2030-3afbfb79da19
+
 # Module 4 -  Time Series Analysis Project
 
 ## Introduction:
 For this data analysis project, I have been hired as a consultant for a fictional real-estate investment firm. The firm wants to know:
-> what are the top 5 best zipcodes for us to invest in?
+> What are the top 5 best zip codes for us to invest in?
 
 My goal is to forecast real estate prices of various zipcodes using data from Zillow and find the 5 "Best Investments" in The Greater Atlanta Area.
 
 ### Definition of "Best Investment"
-#### "Best investment" = Zipcode has highest 10-year ROI & zipcode meets all 4 of our investment criteria.
+#### "Best investment" = Zip code has the highest 10-year ROI & zipcode meets all 4 of our investment criteria.
 
 ### Opportunity:
-As a Georgia native with an impressive 6 months of real estate experience, they couln't have picked a better pro for the job.
+As a Georgia native with an impressive 6 months of real estate experience, they couldn't have picked a better pro for the job.
 
 Over the past 20 years I have lived in Atlanta, I have seen more and more people move away from downtown to the suburbs because the cost of living is much cheaper.
 
-Everyday, 500 people move to Atlanta; therefore, the suburb begin to fill up very quickly. Prices begin to rise and the next suburb begins to develop. Suppose the first suburb was 30 min from downtown and the next suburb being developed is 40 minutes from the city. Prices will be more expensive in the closer suburb. But as suburbs are build farther and farrther away, what one might have imaged as "far" today, could be PRIME REAL ESTATE in 10 years.
+Everyday, 500 people move to Atlanta; therefore, the suburb begins to fill up very quickly. Prices begin to rise and the next suburb begins to develop. Suppose the first suburb was 30 min from downtown and the next suburb being developed is 40 minutes from the city. Prices will be more expensive in the closer suburb. But as suburbs are built farther and farther away, what one might have imagined as "far" today, could be PRIME REAL ESTATE in 10 years.
 
-Good news for the investment firm, We have a MASSIVE opportunity to pinpoint the best zipcodes in The Greater Atlanta Area to forecast where the PRIME REAL ESTATE will be in 10 years.
+Good news for the investment firm, We have a MASSIVE opportunity to pinpoint the best zip codes in The Greater Atlanta Area to forecast where the PRIME REAL ESTATE will be in 10 years.
 
 
 ### Zillow Real Estate Data
-Zillow Real Estate Data includes: Monthly median house prices from 4/1996 - 4/2018, city, state, county, zipcode, sizerank, and Region ID.
+Zillow Real Estate Data includes: Monthly median house prices from 4/1996 - 4/2018, city, state, county, zip code, sizerank, and Region ID.
 
 I picked 3 counties that I hypothesize real estate prices will rapidly increase over the next 10 years.
 
@@ -32,7 +35,7 @@ I picked 3 counties that I hypothesize real estate prices will rapidly increase 
 
 This graph makes a lot of sense. Fulton is the closest to Downtown Atlanta, then Dekalb, then Cobb.
 
-I believe we have a massive opportunity to find a great investment in The Greater Atlanta Area, ideally, in the suburbs that are within 45 min of Downtown Atlanta. In order to figure out where the best zipcodes are, we must filter the zipcodes by our "Best ZIP Code Criteria"
+I believe we have a massive opportunity to find a great investment in The Greater Atlanta Area, ideally, in the suburbs that are within 45 min of Downtown Atlanta. In order to figure out where the best zip codes are, we must filter the zip codes by our "Best ZIP Code Criteria"
 
 ## "Best ZIP Code Criteria":
 
@@ -52,13 +55,13 @@ I believe we have a massive opportunity to find a great investment in The Greate
 
 <img src="images/t5_zips.png"/>
 
-## Top 5 Zipcodes
+## Top 5 Zip codes
 
-#### Zipcode 30080 - Smyrna, GA
-#### Zipcode 30066 - Marietta, GA
-#### Zipcode 30064 - Marietta, GA
-#### Zipcode 30152 - Kennesaw, GA 
-#### Zipcode 30101 - Acworth, GA
+#### Zip code 30080 - Smyrna, GA
+#### Zip code 30066 - Marietta, GA
+#### Zip code 30064 - Marietta, GA
+#### Zip code 30152 - Kennesaw, GA 
+#### Zip code 30101 - Acworth, GA
 
 NW Atlanta Zips (Cobb + Marietta GA)
 
@@ -66,13 +69,13 @@ NW Atlanta Zips (Cobb + Marietta GA)
 
 
 ## Time Series Analysis
-#### Time Series Plot for our Top5 Zipcodes
+#### Time Series Plot for our Top5 Zip codes
 
 <img src="images/ga_t5_ts.png"/>
 
 - I can see an overall positive trend year to year, but I am going to look at the returns by month to see if the trend is more stationary. 
 
-- Note: The 2007 housing bubble crash is easily seen in our graph. So monthly returns is probably a better indicator.
+- Note: The 2007 housing bubble crash is easily seen in our graph. So monthly returns are probably a better indicator.
 
 #### Monthly Returns
 <img src="images/mr_30080.png"/>
@@ -83,7 +86,7 @@ NW Atlanta Zips (Cobb + Marietta GA)
 <img src="images/rolling_30080.png"/>
 
 - After plotting rolling mean, rolling standard deviation, and monthly returns, there is no trend in the plot.
-- Now I conducted a Augmented Dickey-Fuller Test for stationarity.
+- Now I conducted an Augmented Dickey-Fuller Test for stationarity.
 
 #### ADF (Augmented Dickey-Fuller Test)
 <img src="images/adf.png"/>
@@ -91,7 +94,7 @@ NW Atlanta Zips (Cobb + Marietta GA)
 Insight:
 
 a) Naked eye test tells us that the data looks stationary, but the Dickey-Fuller Test says the data is not stationary.
-b) "i" is most likely 1 since all 5 zipcodes were not stationary
+b) "i" is most likely 1 since all 5 zip codes were not stationary
 c) If the data was stationary, "i" would have been 0
 
 
@@ -122,20 +125,21 @@ Test
 <img src="images/results.png"/>
 
 
-## Recommendations
+## Business Recommendations
 
-#### After performing time series analysis on the top 5 zipcodes in the greater atlanta area, I recommend investing in 3:
+#### After performing time series analysis on the top 5 zip codes in the Greater Atlanta Area, I recommend investing in 3:
 
 #### 1) 30080 (Smyrna, GA) -> 10-yr return = 430.62%
 #### 2) 30101 (Acworth, GA) -> 10-yr return = 141.87%
 #### 3) 30066 (Marietta, GA) -> 10-yr return = 124.46%
 
-#### The predicted return on investment for zipcode 30080 is much higher than the other, look in Smyrna, GA first.
+#### The predicted return on investment for zip code 30080 is much higher than the other, look in Smyrna, GA first.
+
 
 
 ## Future Work
 
 * Include 2019 and 2020 data
 * Include impact of COVID-19 on real estate prices
-* Change "Best Zipcode" definition
+* Change "Best Zip code" definition
 * Change risk averse criteria to a very risky criteria 
